@@ -53,6 +53,21 @@ A menu is added with alternating title and callback arguments at the end of the 
     WS.cardTree(tree);
     WS.displayCardTree();
 
+A card's tap callback can cause the menu to exit by calling WS.displayWebView().
+.. code-block:: javascript
+
+    var tree = new WS.Cards();
+    tree.add('Body 0', undefined, undefined, function () {
+        WS.say('selected 0');
+        WS.displayWebView();
+    });
+    tree.add('Body 1', 'Footer 1', undefined, function() {
+        WS.say('selected 1');
+        WS.displayWebView();
+    });
+    WS.cardTree(tree);
+    WS.displayCardTree();
+
 A subtree of cards is added by creating another set of cards and placing it as the last parameter (may only have a menu or a subtree for a card).  There is no depth limit for subtrees.
 
 .. code-block:: javascript
@@ -116,3 +131,6 @@ WS.cardTree(tree) : void
 
 WS.displayCardTree() : void
   Shows the CardScrollView
+
+WS.displayWebView() : void
+  Display the WebView activity (this is the default, reserved for future use when we may have alternate views).
